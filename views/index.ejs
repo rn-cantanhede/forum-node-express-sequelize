@@ -1,0 +1,77 @@
+<%- include("partials/header"); %> <!-- Inclui o cabeçalho comum da página -->
+<body>
+    <%- include("partials/navbar"); %> <!-- Inclui a barra de navegação comum -->
+    <div class="container mt-auto">
+        <!-- Container principal com margem automática no topo -->
+        <div class="row">
+            <div class="col-3">
+                <!-- Coluna vazia para espaçamento à esquerda -->
+            </div>
+            <div class="col-6">
+                <!-- Coluna central que contém as abas -->
+                <nav>
+                    <!-- Navegação das abas -->
+                    <div class="nav nav-underline" id="nav-tab" role="tablist">
+                        <!-- Botão da aba 'Discover' ativa por padrão -->
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Discover</button>
+                        <!-- Botão da aba 'Answer' -->
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Answer</button>
+                    </div>
+                </nav>
+                <div class="tab-content questions" id="nav-tabContent">
+                    <!-- Conteúdo da aba 'Discover', ativa por padrão -->
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                        <% questions.forEach(question => { %> <!-- Itera sobre cada pergunta -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h4>
+                                            <!-- Link para a página da pergunta, com título truncado se longo -->
+                                            <a href="/question/<%= question.id %>" class="link-offset-2 link-underline link-underline-opacity-0"> 
+                                                <%= question.title.length > 100 ? question.title.substring(0, 87) + "..." : question.title %>
+                                            </a>
+                                        </h4>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <th>
+                                    <!-- Descrição da pergunta truncada, se muito longa -->
+                                    <%= question.title.length > 100 ? question.description.substring(0, 87) + "..." : question.description %>
+                                </th>
+                            </tbody>
+                        </table>
+                        <% }) %>
+                    </div>
+                    <!-- Conteúdo da aba 'Answer' -->
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                        <% answers.forEach(answer => {%> <!-- Itera sobre cada resposta -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h4>
+                                            <!-- Link para a pergunta relacionada à resposta, com o corpo truncado -->
+                                            <a href="/question/<%= answer.questionId %>" class="link-offset-2 link-underline link-underline-opacity-0">
+                                                <%= answer.body.length > 100 ? answer.body.substring(0, 87) + "..." : answer.body %>
+                                            </a>
+                                        </h4>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Espaço reservado para possíveis detalhes futuros -->
+                            </tbody>
+                        </table>
+                        <% }) %> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <!-- Coluna vazia para espaçamento à direita -->
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("partials/footer"); %> <!-- Inclui o rodapé comum da página -->

@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs"); %> <!-- Inclui o cabeçalho comum da página -->
+<body>
+    <%- include("../partials/navbar.ejs"); %> <!-- Inclui a barra de navegação comum -->
+    <div class="container">
+        <!-- Container principal para centralizar e dar espaçamento -->
+        <div class="card" id="formulario-pergunta">
+            <!-- Card Bootstrap para destacar o formulário -->
+            <div class="card-header">
+                <h3>Realizar pergunta</h3> <!-- Título do formulário -->
+            </div>
+            <div class="card-body">
+                <!-- Corpo do card contendo o formulário -->
+                <form method="POST" action="/savequestion">
+                    <!-- Formulário que envia dados para salvar nova pergunta -->
+                    <label>Título</label>
+                    <input name="title" placeholder="Título" type="text" class="form-control">
+                    <!-- Campo para título da pergunta -->
+                    <br><label>Descrição</label>
+                    <textarea name="description" placeholder="Descreva sua pergunta aqui" class="form-control"></textarea>
+                    <!-- Campo para descrição detalhada da pergunta -->
+                    <br><button class="btn btn-primary">Perguntar</button>
+                    <!-- Botão para submeter o formulário -->
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("../partials/footer.ejs"); %> <!-- Inclui o rodapé comum da página -->

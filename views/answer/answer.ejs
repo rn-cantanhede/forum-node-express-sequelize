@@ -1,0 +1,65 @@
+<%- include ("../partials/header.ejs"); %> <!-- Inclui o cabeçalho padrão da página -->
+<body>
+    <%- include ("../partials/navbar.ejs"); %> <!-- Inclui a barra de navegação -->
+
+    <div class="container">
+        <!-- Tabela que exibe a pergunta com título e descrição -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <!-- Exibe o título da pergunta, com quebra de linha para palavras longas -->
+                        <h1 style="word-break: break-word; overflow-wrap: break-word;">
+                            <%= question.title %>
+                        </h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <th>
+                    <!-- Exibe a descrição da pergunta, também formatada para quebra de palavras -->
+                    <p style="word-break: break-word; overflow-wrap: break-word;"> 
+                        <%= question.description %>
+                    </p>
+                </th>
+            </tbody>
+        </table>
+
+        <!-- Formulário para enviar uma nova resposta -->
+        <form method="post" action="/answer">
+            <h3>Resposta</h3>
+            <!-- Campo textarea para o usuário digitar a resposta -->
+            <textarea placeholder="Digite sua resposta" name="body" class="form-control"></textarea><br>
+
+            <!-- Campo oculto que envia o ID da pergunta para associar a resposta -->
+            <input type="hidden" name="question" value="<%= question.id %>">
+
+            <!-- Botão para enviar o formulário -->
+            <button type="submit" class="btn btn-primary">Responder</button>
+        </form>
+
+        <br>
+
+        <!-- Tabela que lista todas as respostas para a pergunta -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Respostas</h3>
+                    </th>
+                </tr>
+            </thead>
+            
+            <!-- Itera sobre o array de respostas e exibe cada uma -->
+            <% answer.forEach(answer =>{ %>
+            <tbody>
+                <th>
+                    <!-- Exibe o corpo da resposta com quebra de palavras -->
+                    <p style="word-break: break-word; overflow-wrap: break-word;"><%= answer.body %></p>
+                </th>
+            </tbody>
+            <% }) %>
+        </table>
+    </div>
+</body>
+<%- include ("../partials/footer.ejs"); %> <!-- Inclui o rodapé padrão da página -->
