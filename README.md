@@ -1,0 +1,2 @@
+# forum-node-express-sequelize
+Fórum de perguntas e respostas desenvolvido com Node.js, Express, Sequelize, MySQL e EJS. Permite a publicação de perguntas, respostas e interação entre usuários de forma simples. Futuras atualizações incluirão autenticação com cookies, associação de usuários às postagens, URLs amigáveis com Slugify, sistema de edição e exclusão de conteúdo e funcionalidade de busca.
