@@ -1,8 +1,8 @@
 const { Sequelize } = require("sequelize"); // Importa o Sequelize para definição de modelos
 const connection = require("../database/database"); // Importa a conexão com o banco de dados
 
-// Define o modelo 'Question', que representa a tabela 'pergunta' no banco de dados
-const Question = connection.define("pergunta", {
+// Define o modelo 'Question', que representa a tabela 'question' no banco de dados
+const Question = connection.define("question", {
     title: {
         type: Sequelize.STRING, // Define o tipo do campo como string
         allowNull: false,       // Campo obrigatório, não pode ser nulo
