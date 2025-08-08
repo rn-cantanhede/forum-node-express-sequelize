@@ -2,8 +2,8 @@ const { Sequelize } = require("sequelize"); // Importa o construtor Sequelize pa
 const connection = require("../database/database"); // Importa a conexão com o banco de dados
 const Question = require("../question/Question"); // Importa o modelo de perguntas para criar associação
 
-// Define o modelo "Answer" (respostas), que representa a tabela 'questions' no banco de dados
-const Answer = connection.define("questions",{
+// Define o modelo "Answer" (respostas), que representa a tabela 'answers' no banco de dados
+const Answer = connection.define("answers",{
     body: {
         type: Sequelize.TEXT, // Tipo TEXT para armazenar o conteúdo da resposta
         allowNull: false      // Campo obrigatório, não pode ser nulo
